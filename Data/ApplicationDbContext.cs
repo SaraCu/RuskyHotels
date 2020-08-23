@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using RuskyHotels.Models;
 
 namespace RuskyHotels.Data
 {
@@ -12,5 +10,13 @@ namespace RuskyHotels.Data
             : base(options)
         {
         }
+
+        public DbSet<Reservation> Reservations { get; set; }
+
+        public DbSet<Room> Rooms { get; set; }
+
+        public DbSet<RoomPrice> RoomPrices { get; set; }
+
+        public DbSet<Guest> Guests { get; set; }
     }
 }
