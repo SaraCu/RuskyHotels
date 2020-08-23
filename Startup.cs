@@ -29,13 +29,13 @@ namespace RuskyHotels
                 options.UseSqlServer(Configuration.GetConnectionString("RuskyHotelsDbSQL"))
                 );
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedEmail = false)
+            services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedEmail = false)
                .AddEntityFrameworkStores<ApplicationDbContext>()
                .AddDefaultUI()
                .AddDefaultTokenProviders();
 
             services.AddControllersWithViews();
-           services.AddRazorPages();
+            services.AddRazorPages();
 
             services.Configure<IdentityOptions>(options =>
             {
