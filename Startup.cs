@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using RuskyHotels.Models;
 
 namespace RuskyHotels
 {
@@ -23,13 +24,17 @@ namespace RuskyHotels
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(
-                    Configuration.GetConnectionString("RuskyHotelsDb")));
+                //options.UseSqlite(
+                //    Configuration.GetConnectionString("RuskyHotelsDb")));
+                options.UseSqlServer(Configuration.GetConnectionString("RuskyHotelsDbSQL"))
+                );
 
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser, IdentityRole>(options => options.SignIn.RequireConfirmedEmail = false)
+               .AddEntityFrameworkStores<ApplicationDbContext>()
+               .AddDefaultUI()
+               .AddDefaultTokenProviders();
 
-           services.AddControllersWithViews();
+            services.AddControllersWithViews();
            services.AddRazorPages();
 
             services.Configure<IdentityOptions>(options =>
