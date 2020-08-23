@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using RuskyHotels.Models;
+@using RuskyHotels.Enums;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -30,13 +31,22 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        @if (SignInManager.IsSignedIn(User))
+                        @if (User.IsInRole(Role.Admin.ToString()))
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Rooms" asp-action="Index">Rooms</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="RoomPrices" asp-action="Index">Room Prices</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(Role.SuperAdmin.ToString()))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="RoleManager" asp-action="Index">Roles</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="UserRoles" asp-action="Index">User Roles</a>
                             </li>
                         }
                     </ul>

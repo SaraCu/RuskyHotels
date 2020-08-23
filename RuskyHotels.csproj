@@ -19,6 +19,8 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
     <Folder Include="Migrations\" />
+    <Folder Include="Views\RoleManager\" />
+    <Folder Include="Views\UserRoles\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Data\Migrations\20200823133304_UpdateRoom.Designer.cs" />

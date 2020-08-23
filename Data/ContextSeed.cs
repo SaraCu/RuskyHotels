@@ -13,6 +13,7 @@ namespace RuskyHotels.Data
             //Seed Roles
             await roleManager.CreateAsync(new IdentityRole(Role.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Role.Viewer.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Role.SuperAdmin.ToString()));
         }
 
         public static async Task SeedSuperAdminAsync(UserManager<ApplicationUser> userManager)
@@ -35,6 +36,7 @@ namespace RuskyHotels.Data
                     await userManager.CreateAsync(defaultUser, "Admin98765.");
                     await userManager.AddToRoleAsync(defaultUser, Role.Viewer.ToString());
                     await userManager.AddToRoleAsync(defaultUser, Role.Admin.ToString());
+                    await userManager.AddToRoleAsync(defaultUser, Role.SuperAdmin.ToString());
                 }
 
             }
