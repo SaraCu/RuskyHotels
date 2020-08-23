@@ -8,6 +8,7 @@ namespace RuskyHotels.Models
         [Key]
         public long Id { get; set; }
 
+        [Display(Name = "Room Type")]
         public RoomType RoomType { get; set; }
 
         public decimal Price { get; set; }

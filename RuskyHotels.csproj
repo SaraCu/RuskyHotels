@@ -19,4 +19,9 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200823133304_UpdateRoom.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200823134012_InitialModel.cs" />
+    <Compile Remove="Data\Migrations\20200823134012_InitialModel.Designer.cs" />
+  </ItemGroup>
 </Project>

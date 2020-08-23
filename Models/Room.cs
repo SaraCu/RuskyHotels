@@ -1,24 +1,20 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
 using RuskyHotels.Enums;
 
 namespace RuskyHotels.Models
 {
     public class Room
     {
-        public Room()
-        {
-        }
-
         [Key]
         public long Id { get; set; }
 
+        [Display(Name = "Room Type")]
         public RoomType RoomType { get; set; }
 
-        [ForeignKey(nameof(RoomPrice))]
-        public long RoomPriceId { get; set; }
+        [Display(Name = "Floor")]
+        public int Foor { get; set; }
 
-        public virtual RoomPrice RoomPrice { get; set; }
+        [Display(Name = "Room Number")]
+        public int RoomNumber { get; set; }
     }
 }

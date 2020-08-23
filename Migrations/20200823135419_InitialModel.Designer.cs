@@ -6,17 +6,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RuskyHotels.Data;
 
-namespace RuskyHotels.Data.Migrations
+namespace RuskyHotels.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200823100502_CreateInitialModel")]
-    partial class CreateInitialModel
+    [Migration("20200823135419_InitialModel")]
+    partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1");
+                .HasAnnotation("ProductVersion", "3.1.7");
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -269,15 +269,16 @@ namespace RuskyHotels.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<long>("RoomPriceId")
+                    b.Property<int>("Foor")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("RoomNumber")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("RoomType")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("RoomPriceId");
 
                     b.ToTable("Rooms");
                 });
@@ -361,15 +362,6 @@ namespace RuskyHotels.Data.Migrations
                     b.HasOne("RuskyHotels.Models.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("RuskyHotels.Models.Room", b =>
-                {
-                    b.HasOne("RuskyHotels.Models.RoomPrice", "RoomPrice")
-                        .WithMany()
-                        .HasForeignKey("RoomPriceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
