@@ -14,6 +14,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Bootstrap.Datepicker" Version="1.8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +27,14 @@
     <Compile Remove="Data\Migrations\20200823133304_UpdateRoom.Designer.cs" />
     <Compile Remove="Data\Migrations\20200823134012_InitialModel.cs" />
     <Compile Remove="Data\Migrations\20200823134012_InitialModel.Designer.cs" />
+    <Compile Remove="Data\RuskyHotelsContext.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Views\Rezervations\Create.cshtml" />
+    <Content Remove="Views\Rezervations\Edit.cshtml" />
+    <Content Remove="Views\Rezervations\Details.cshtml" />
+    <Content Remove="Views\Rezervations\Delete.cshtml" />
+    <Content Remove="Views\Rezervations\Index.cshtml" />
+    <Content Remove="Views\Reservations\Edit.cshtml" />
   </ItemGroup>
 </Project>

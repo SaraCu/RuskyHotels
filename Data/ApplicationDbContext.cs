@@ -18,8 +18,6 @@ namespace RuskyHotels.Data
 
         public DbSet<RoomPrice> RoomPrices { get; set; }
 
-        public DbSet<Guest> Guests { get; set; }
-
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

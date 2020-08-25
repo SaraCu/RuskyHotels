@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using RuskyHotels.Models;
+using System.Threading.Tasks;
 
 namespace RuskyHotels
 {
@@ -102,6 +103,8 @@ namespace RuskyHotels
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
+            app.SeedRoomPrices();
         }
     }
 }

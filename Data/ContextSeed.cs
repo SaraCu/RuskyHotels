@@ -1,6 +1,9 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using RuskyHotels.Enums;
 using RuskyHotels.Models;
 
@@ -40,6 +43,39 @@ namespace RuskyHotels.Data
                 }
 
             }
+        }
+
+        public static void SeedRoomPrices(this IApplicationBuilder app)
+        {
+            var scopeFactory = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>();
+            using (var scope = scopeFactory.CreateScope())
+            {
+                var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+                var roomPrices = context.RoomPrices.ToList();
+                (RoomType, decimal)[] required = {
+                (RoomType.Single, 300),
+                (RoomType.Double, 400),
+                (RoomType.Triple, 500),
+                (RoomType.Penthouse, 700)
+            };
+
+                foreach (var item in required)
+                {
+                    if (!roomPrices.Any(r => r.RoomType == item.Item1))
+                    {
+                        context.Add(new RoomPrice
+                        {
+                            RoomType = item.Item1,
+                            Price = item.Item2,
+
+                        });
+                    }
+                }
+                context.SaveChanges();
+            }
+
+           
         }
     }
 }
