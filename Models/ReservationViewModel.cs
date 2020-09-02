@@ -4,7 +4,7 @@ using RuskyHotels.Enums;
 
 namespace RuskyHotels.Models
 {
-    public class ReservationViewModel
+    public class ReservationViewModel 
     {
         public long Id { get; set; }
 
@@ -34,5 +34,6 @@ namespace RuskyHotels.Models
         public string LastName { get; set; }
 
         public string Email { get; set; }
+
     }
 }
